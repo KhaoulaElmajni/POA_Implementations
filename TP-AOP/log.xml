@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-01-26T03:06:41</date>
+  <millis>1611626801153</millis>
+  <sequence>0</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>addCompt_aroundBody1$advice</method>
+  <thread>1</thread>
+  <message>----------------------------------------------------</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:41</date>
+  <millis>1611626801177</millis>
+  <sequence>1</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>addCompt_aroundBody1$advice</method>
+  <thread>1</thread>
+  <message>Avant execution de la methode void metier.MetierBanqueImpl.addCompt(Compte)</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:41</date>
+  <millis>1611626801178</millis>
+  <sequence>2</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>addCompt_aroundBody1$advice</method>
+  <thread>1</thread>
+  <message>apress execution de la methode void metier.MetierBanqueImpl.addCompt(Compte)</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:41</date>
+  <millis>1611626801179</millis>
+  <sequence>3</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>addCompt_aroundBody1$advice</method>
+  <thread>1</thread>
+  <message>Duree d'execution de la methode :32</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:41</date>
+  <millis>1611626801180</millis>
+  <sequence>4</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>addCompt_aroundBody1$advice</method>
+  <thread>1</thread>
+  <message>----------------------------------------------------</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805415</millis>
+  <sequence>5</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>verser_aroundBody3$advice</method>
+  <thread>1</thread>
+  <message>----------------------------------------------------</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805416</millis>
+  <sequence>6</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>verser_aroundBody3$advice</method>
+  <thread>1</thread>
+  <message>Avant execution de la methode void metier.MetierBanqueImpl.verser(Long, double)</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805418</millis>
+  <sequence>7</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>verser_aroundBody3$advice</method>
+  <thread>1</thread>
+  <message>apress execution de la methode void metier.MetierBanqueImpl.verser(Long, double)</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805418</millis>
+  <sequence>8</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>verser_aroundBody3$advice</method>
+  <thread>1</thread>
+  <message>Duree d'execution de la methode :3</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805419</millis>
+  <sequence>9</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>verser_aroundBody3$advice</method>
+  <thread>1</thread>
+  <message>----------------------------------------------------</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805419</millis>
+  <sequence>10</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>consulter_aroundBody9$advice</method>
+  <thread>1</thread>
+  <message>----------------------------------------------------</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805420</millis>
+  <sequence>11</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>consulter_aroundBody9$advice</method>
+  <thread>1</thread>
+  <message>Avant execution de la methode Compte metier.MetierBanqueImpl.consulter(Long)</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805422</millis>
+  <sequence>12</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>consulter_aroundBody9$advice</method>
+  <thread>1</thread>
+  <message>apress execution de la methode Compte metier.MetierBanqueImpl.consulter(Long)</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805423</millis>
+  <sequence>13</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>consulter_aroundBody9$advice</method>
+  <thread>1</thread>
+  <message>Duree d'execution de la methode :4</message>
+</record>
+<record>
+  <date>2021-01-26T03:06:45</date>
+  <millis>1611626805423</millis>
+  <sequence>14</sequence>
+  <logger>aspects.LogginAspect</logger>
+  <level>INFO</level>
+  <class>metier.MetierBanqueImpl</class>
+  <method>consulter_aroundBody9$advice</method>
+  <thread>1</thread>
+  <message>----------------------------------------------------</message>
+</record>
+</log>
