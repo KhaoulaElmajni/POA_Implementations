@@ -3,7 +3,7 @@ package me.elmajni.aspects;
 public aspect FirstAspect {
 
     //pointcut for the method "main" to be intercepted during execution
-    pointcut pc1() : execution(* me..test.Application.main(..));
+    pointcut pc1() : execution(* me..test.Application.main1(..));
 
     /*//before pointcut pc1 ==> code to be executed before the method "main" is executed ==> code advice
     before():pc1() {
