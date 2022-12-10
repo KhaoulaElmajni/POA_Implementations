@@ -1,5 +1,5 @@
-import aspects.ApplicationContext;
-import metier.IMetier;
+import me.elmajni.metier.IMetier;
+import me.elmajni.aspects.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
