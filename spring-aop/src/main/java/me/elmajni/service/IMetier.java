@@ -1,4 +1,4 @@
-package me.elmajni.metier;
+package me.elmajni.service;
 
 public interface IMetier {
     public void process();
