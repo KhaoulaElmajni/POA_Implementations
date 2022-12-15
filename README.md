@@ -14,6 +14,11 @@
  ![](https://i.imgur.com/eP9B9As.png)
  
 # Partie 1: (AspectJ)
+## AspectJ
+
+![](https://i.imgur.com/vJ9QkWw.png)
+
+
  <span style="color:#66ff66"> Entités et règles de gestion : :label: </span>
  * Une entité "Compte"
 
@@ -272,6 +277,10 @@ public class PathRetraitAspect {
 
 # Partie 2: (Spring AOP) 
 
+## Spring AOP
+![](https://i.imgur.com/MQpaufy.png)
+
+
  <span style="color:#66ff66"> Entités et règles de gestion : :label: </span>
  
  
@@ -470,18 +479,21 @@ public class Application {
 
  
  # <span style="color:green">3.Les Technologies utilisées</span>
- #### <span style="color:#0036ad"> 1.Java</span>
- * <strong style="color:dark">* <strong style="color:dark">Java est le langage de choix pour créer des applications à l'aide de code managé qui peut s'exécuter sur des appareils mobiles.
+ #### <span style="color:#0036ad"> 1.Spring Core</span>
+ * <strong style="color:dark">* <strong style="color:dark">Core (spring-core) est le cœur du framework qui alimente des fonctionnalités telles que l'inversion de contrôle et l'injection de dépendances.
 
-*voir également à propos* [JAVA](https://www.java.com/fr/):link: 
+*voir également à propos* [Spring Core](https://www.bmc.com/blogs/spring-framework/#:~:text=Core%20container&text=Core%20(spring%2Dcore)%20is,implementation%20of%20the%20factory%20pattern.):link: 
 
+	
+#### <span style="color:#0036ad"> 1.Spring Context</span>
+* <strong style="color:dark">* <strong style="color:dark">Les contextes Spring sont également appelés conteneurs Spring IoC, qui sont responsables de l'instanciation, de la configuration et de l'assemblage des beans en lisant les métadonnées de configuration à partir des annotations XML, Java et/ou du code Java dans les fichiers de configuration.
 
-	SPRING CORE
-	SPRING CONTEXT
-	SPRING ASPECTS
-	
-	
-	
+*voir également à propos* [Spring Context](https://dzone.com/articles/what-is-a-spring-context#:~:text=Spring%20contexts%20are%20also%20called,code%20in%20the%20configuration%20files.):link: 
+
+ #### <span style="color:#0036ad"> 1.Spring Context</span>
+* <strong style="color:dark">* <strong style="color:dark">Dans Spring AOP, les aspects sont implémentés à l'aide de classes régulières (l'approche basée sur un schéma) ou de classes régulières annotées avec l'annotation @Aspect.
+
+*voir également à propos* [Spring Aspects](https://docs.spring.io/spring-framework/docs/2.5.5/reference/aop.html):link: 	
 
 
 	
