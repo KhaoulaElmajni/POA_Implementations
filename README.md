@@ -3,7 +3,274 @@
  * <strong style="color:dark"> : 
 	
 </span>
+
+
+ # <span style="color:green "> 2.Architecture de l'activité pratique</span>
+ 
+# Partie 1 (AspectJ):
+![](https://i.imgur.com/SUJ0zkZ.png)
+
+# Partie 2 (Spring AOP):
+ ![](https://i.imgur.com/eP9B9As.png)
+ 
 # Partie 1: (AspectJ)
+ <span style="color:#66ff66"> Entités et règles de gestion : :label: </span>
+ * Une entité "Compte"
+
+```java!
+public class Compte {
+    private Long code;
+    private double solde;
+
+    public Compte(Long code, double solde) {
+        this.code = code;
+        this.solde = solde;
+    }
+
+    public Compte() {
+    }
+
+    public Long getCode() {
+        return code;
+    }
+
+    public double getSolde() {
+        return solde;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
+    }
+
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
+
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "code=" + code +
+                ", solde=" + solde +
+                '}';
+    }
+}
+
+```
+Interface "IMetier"
+```java!
+public interface IMetierBanque {
+    void addCompte(Compte cp);
+    void verser(Long code,double montant);
+    void retirer(Long code,double montant);
+    Compte consulter(Long code);
+}
+```
+
+Implémentation de "IMetier"
+```java!
+
+public class MetierBanqueImpl implements IMetierBanque {
+   private Map<Long,Compte> compteMap=new HashMap<>();
+
+    @Override
+    public void addCompte(Compte cp) {
+        compteMap.put(cp.getCode(),cp);
+    }
+
+    @Override
+    public void verser(Long code, double montant) {
+        Compte compte=compteMap.get(code);
+        compte.setSolde(compte.getSolde()+montant);
+    }
+
+    @Override
+    public void retirer(Long code, double montant) {
+        Compte compte=compteMap.get(code);
+        compte.setSolde(compte.getSolde()-montant);
+
+    }
+
+    @Override
+    public Compte consulter(Long code) {
+        return compteMap.get(code);
+    }
+}
+```
+
+> Aspect 1:
+
+```java!
+public aspect FirstAspect {
+
+    //pointcut for the method "main" to be intercepted during execution
+    pointcut pc1() : execution(* me..test.Application.main1(..));
+
+    /*//before pointcut pc1 ==> code to be executed before the method "main" is executed ==> code advice
+    before():pc1() {
+        System.out.printf("--------------------------------------------------------");
+        System.out.println("Before the main method from Aspect with AspectJ syntax");
+        System.out.printf("--------------------------------------------------------");
+    }
+
+    //after pointcut pc1 ==> code to be executed after the method "main" is executed ==> code advice
+    after():pc1() {
+        System.out.printf("--------------------------------------------------------");
+        System.out.println("After the main method from Aspect with AspectJ syntax");
+        System.out.printf("--------------------------------------------------------");
+    }*/
+
+    void around():pc1(){
+        System.out.println("------------------------------------------------");
+        System.out.println("before main from aspectj with aspectj syntax");
+        System.out.println("------------------------------------------------");
+
+        //Execution de l'operation du pointcut
+        //execution(* test.Application.main(..))
+        proceed();
+        System.out.println("------------------------------------------------");
+        System.out.println("after main from aspectj with aspectj syntax");
+        System.out.println("------------------------------------------------");
+
+    }
+}
+
+```
+
+>Aspect 2
+
+```java!
+@Aspect
+public class SecondAspect {
+    @Pointcut("execution(* me..test.*.main1(..))")
+    public void pc1(){ }
+
+    //code advice
+
+   /* @Before("pc1()")
+    public void beforeMain(){
+
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("before main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+
+    }
+    @After("pc1()")
+    public void afterMain(){
+
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("after main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+
+    }*/
+
+    @Around("pc1()")
+    public void aroundMain(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("before main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+        //execute main
+        proceedingJoinPoint.proceed();
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("after main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+
+    }
+}
+
+```
+> Aspect de journalisation : 
+
+```java!
+@Aspect
+public class SecondAspect {
+    @Pointcut("execution(* me..test.*.main1(..))")
+    public void pc1(){ }
+
+    //code advice
+
+   /* @Before("pc1()")
+    public void beforeMain(){
+
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("before main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+
+    }
+    @After("pc1()")
+    public void afterMain(){
+
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("after main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+
+    }*/
+
+    @Around("pc1()")
+    public void aroundMain(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("before main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+        //execute main
+        proceedingJoinPoint.proceed();
+        System.out.println("----------****************--------------------------------------");
+        System.out.println("after main from aspectj with class syntax");
+        System.out.println("-----------*****************-------------------------------------");
+
+    }
+}
+
+```
+
+> Aspect de Retrait
+
+```java!
+@Aspect
+public class PathRetraitAspect {
+
+    //Pointcut => expression de point de coupage
+    @Pointcut("execution(* me..metier.MetierBanqueImpl.retirer(..) )")
+    public void pc1(){ }
+
+    //code advice => around the  method retirer
+    @Around("pc1() && args(code,montant)")
+    public Object autourRetirer(Long code,double montant,ProceedingJoinPoint proceedingJoinPoint, JoinPoint joinPoint) throws Throwable {
+        MetierBanqueImpl metierBanque=(MetierBanqueImpl) joinPoint.getTarget();
+        Compte compte=metierBanque.consulter(code);
+        if(compte.getSolde()<montant) throw new RuntimeException("solde insuffisant");
+        return  proceedingJoinPoint.proceed();
+    }
+}
+
+```
+
+>Aspect de sécurité
+
+```java!
+@Aspect
+public class PathRetraitAspect {
+
+    //Pointcut => expression de point de coupage
+    @Pointcut("execution(* me..metier.MetierBanqueImpl.retirer(..) )")
+    public void pc1(){ }
+
+    //code advice => around the  method retirer
+    @Around("pc1() && args(code,montant)")
+    public Object autourRetirer(Long code,double montant,ProceedingJoinPoint proceedingJoinPoint, JoinPoint joinPoint) throws Throwable {
+        MetierBanqueImpl metierBanque=(MetierBanqueImpl) joinPoint.getTarget();
+        Compte compte=metierBanque.consulter(code);
+        if(compte.getSolde()<montant) throw new RuntimeException("solde insuffisant");
+        return  proceedingJoinPoint.proceed();
+    }
+}
+
+```
+
+> Résultat:
+
+![](https://i.imgur.com/RylElqB.png)
+
+
+# Partie 2: (Spring AOP) 
 
  <span style="color:#66ff66"> Entités et règles de gestion : :label: </span>
  
@@ -138,9 +405,69 @@ public class User {
     private String cin;
 }
 ```
+> Aspect d'Authorisation
  
- # <span style="color:green "> 2.Architecture de l'activité pratique</span>
- 
+```java!
+
+@Component
+@Aspect
+@EnableAspectJAutoProxy
+public class AuthorizationAspect {
+    @Around(value = "@annotation(securedByAspect)", argNames = "pjp,securedByAspect")
+    public Object secure(ProceedingJoinPoint pjp, SecuredByAspect securedByAspect) throws Throwable {
+        String[] roles= securedByAspect.roles();
+        boolean authorized=false;
+        for (String r:roles) {
+            if (SecurityContext.hasRole(r)){
+                authorized=true;
+                break;
+            }
+        }
+        if (authorized==true){
+            Object result = pjp.proceed();
+            return result;
+        }
+        throw new RuntimeException("403 Unauthorized to acces to !"+pjp.getSignature());
+    }
+}
+
+```
+> Application 
+
+```java!
+@ComponentScan(value = {"me.elmajni"})
+public class Application {
+    public static void main(String[] args) {
+
+        try {
+            SecurityContext.authenticate("root","123",new String[]{"USER","ADMIN"});
+            //SecurityContext.authenticate("rot","123",new String[]{"USER","ADMIN"});
+            //SecurityContext.authenticate("root","123",new String[]{"USER"});
+
+            ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Application.class);
+            IMetier metier = applicationContext.getBean(IMetier.class);
+            System.out.println("*******************");
+            System.out.println(metier.getClass().getName());
+            System.out.println("*******************");
+
+            metier.process();
+            System.out.println(metier.compute());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+   // @Configuration
+    //@ComponentScan(value = {"me.elmajni"})
+    public class MyConfig{
+
+    }
+}
+```
+> Résultat:
+
+![](https://i.imgur.com/HbGaEyg.png)
+
  
  # <span style="color:green">3.Les Technologies utilisées</span>
  #### <span style="color:#0036ad"> 1.Java</span>
@@ -156,8 +483,7 @@ public class User {
 	
 	
 
-# Partie 2:(Spring AOP)
-	
+
 	
 > Created by :[name=ELMAJNI KHAOULA]
 [time=Mon,2022,11,01][color=#EF0101]
