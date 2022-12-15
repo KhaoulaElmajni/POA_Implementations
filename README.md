@@ -1,9 +1,30 @@
 # <strong style="color:blue; opacity: 0.80">Activité Pratique Programmation Orientée Aspect</strong>:mortar_board::computer: 
 # <span style="color:green "> 1.Présentation de l'activité pratique</span>
- * <strong style="color:dark"> : 
-	
+# **Partie I (AspectJ)**
+ * <strong style="color:dark"> On souhaite créer une application qui permet de gérer des comptes bancaires stockés en mémoire dans une collection de type Map. 
+	Chaque compte est défini par son code et son solde.
+* Les exigences fonctionnelle de l’application sont:
+	* Ajouter un compte
+	* Consulter un compte
+	* Verser un montant dans un compte
+	* Retirer un montant d’un compte
+* Les exigences techniques seront implémentées sous formes d’aspects suivants:
+	* Un aspect pour la journalisation des appels de toutes les méthodes en affichant la durée d’exécution de chaque méthode
+	* Un aspect pour contrôler le montant du retrait
+	* Un aspect pour sécuriser l’application
 </span>
-
+# **Partie 2 (Spring AOP)**
+* <strong style="color:dark"> On souhaite créer une application qui offrent deux
+fonctionnalités métiers basiques:
+	* Une opération process() permettant d’effectuer un traitement quelconque
+	* Une opération permettant de retourner un résultat de calcul quelconque.
+	
+* Nous définissons dans cette couche métier :
+	* Une interface IMetier
+	* Une implémentation de cette interface
+* Ensuite nous définissons deux aspects basés sur Spring AOP
+	* Un Aspect pour la journalisation avec un annotation @Log qui permet de marquer dans la couche la méthode à journaliser
+	* Un Aspect pour sécuriser l’application avec un authentification basique avec des rôles. Pour sécuriser l’accès à une méthode, nous définissons une annotation @SecuredByAspect(roles=["ADMIN","USER"]) qui sera placée sur les méthodes à sécuriser en spécifiant les rôles requis.
 
  # <span style="color:green "> 2.Architecture de l'activité pratique</span>
  
