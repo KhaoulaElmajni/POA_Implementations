@@ -13,6 +13,7 @@
 	* Un aspect pour contrôler le montant du retrait
 	* Un aspect pour sécuriser l’application
 </span>
+
 # **Partie 2 (Spring AOP)**
 * <strong style="color:dark"> On souhaite créer une application qui offrent deux
 fonctionnalités métiers basiques:
